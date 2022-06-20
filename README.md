@@ -1,4 +1,5 @@
-﻿# KCTalkingCards
+﻿## KCTalkingCards
+
 An Inscryption mod that adds the talking cards from Part 1 into Kaycee's Mod. 
 
 This mod adds a starter deck with the Stoat, Stinkbug, and Stunted Wolf talking cards from Part 1. The cards use the base animated portrait and their dialogue when drawn has been skipped to speed up play.
@@ -46,5 +47,7 @@ No promises on any of these though suggestions and contributions are welcome. Th
 
 ## Changelog
 
+### 1.0.1 
+- Fix README markdown typo
 ### 1.0.0 
 - **Release**

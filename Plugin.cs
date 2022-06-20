@@ -15,7 +15,7 @@ namespace KCTalkingCards
     {     
 	    private const string PluginGuid = "rykedaxter.inscryption.kctalkingcards";
         private const string PluginName = "KCTalkingCards";
-        private const string PluginVersion = "1.0.0";
+        private const string PluginVersion = "1.0.1";
 
         private ConfigEntry<bool> configTalkingCardsBalance;
         private static Harmony harmony;
