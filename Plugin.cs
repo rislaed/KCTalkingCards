@@ -15,21 +15,21 @@ namespace KCTalkingCards
     {     
 	    private const string PluginGuid = "rykedaxter.inscryption.kctalkingcards";
         private const string PluginName = "KCTalkingCards";
-        private const string PluginVersion = "1.0.1";
+        private const string PluginVersion = "1.0.2";
 
         private ConfigEntry<bool> configTalkingCardsBalance;
         private static Harmony harmony;
 
         private void Awake()
-        {            
+        {
             harmony = Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PluginGuid);
 
             configTalkingCardsBalance = Config.Bind("General",
                 "TalkingCardsBalance",
-                true,
+                false,
                 "Applies balancing to the talking cards when true and uses the original Part 1 values for the talking cards otherwise.");
 
-            /* Add Cards and Decks */
+            /* Add Cards and Starter Deck */
 
             CardInfo KCTalkingCards_Stoat = Instantiate(CardLoader.GetCardByName("Stoat_Talking"))
                 .SetNames("KCTalkingCards_Stoat", "Stoat")                
@@ -57,9 +57,7 @@ namespace KCTalkingCards
                 KCTalkingCards_Stoat.SetBaseAttackAndHealth(1, 2);
                 KCTalkingCards_Stinkbug.SetBaseAttackAndHealth(0, 1);
                 KCTalkingCards_Wolf.SetBaseAttackAndHealth(3, 2).SetBloodCost(2);
-            }
-
-            Logger.LogInfo($"Plugin {PluginName} {PluginVersion} is loaded!");            
+            }       
         }
 
 		private void OnDestroy()

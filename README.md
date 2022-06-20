@@ -4,11 +4,11 @@ An Inscryption mod that adds the talking cards from Part 1 into Kaycee's Mod.
 
 This mod adds a starter deck with the Stoat, Stinkbug, and Stunted Wolf talking cards from Part 1. The cards use the base animated portrait and their dialogue when drawn has been skipped to speed up play.
 
-## Balance
+## Balancing
 
-The talking cards have been balanced for Kaycee's Mod but you can use their original Part 1 values by setting `TalkingCardsBalance` to `false` in the configuration. You can see the exact changes below but the Stoat and Stunted Wolf are functionally identical to the Stoat and Wolf cards in Kaycee's Mod except that they're not eligible for combining with their non-talking counterparts at the Mycologists event. As the Stinkbug has no counterpart it has been manually balanced to account for its cheap cost and sigil.
+The talking cards use their original Part 1 stats by default but you can apply some balancing by setting `TalkingCardsBalance` to `true` in the configuration. You can see the exact changes for the balancing below but the Stoat and Stunted Wolf would be functionally identical to the Stoat and Wolf cards in Kaycee's Mod except they're not eligible for combining with their non-talking counterparts at the Mycologists event. As the Stinkbug has no counterpart it has been manually balanced to account for its cheap cost and sigil.
 
-The Talking Cards starter deck is roughly equivalent to the Vanilla starter deck, swapping out the Bullfrog for the Stinkbug. The Talking Cards deck has no advantage other than the cards talking and being animated. You will find no other copy of them during the game. If you are doing challenge runs with this deck, know that sacrifices must be made. Otherwise, enjoy.
+The Talking Cards starter deck when balanced is roughly equivalent to the Vanilla starter deck, swapping out the Bullfrog for the Stinkbug. The Talking Cards deck when balanced has no advantage other than the cards talking and being animated. You will find no other copy of the talking cards during the game. If you are doing challenge runs with the balanced deck, know that sacrifices must be made. Otherwise, enjoy.
 
 ## Issues
 
@@ -27,6 +27,14 @@ No promises on any of these though suggestions and contributions are welcome. Th
 
 3 New Cards:
 
+Default
+|Name|Power|Health|Cost|Evolution|Frozen Away|Tail|Sigils|Specials|Traits|Tribes|
+|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|
+|Stinkbug|1|2| <img align="center" src="https://i.imgur.com/beJhD7d.png">|||| Stinky| TalkingCardChooser|DeathcardCreationNonOption|Insect|
+|Stoat|1|3| <img align="center" src="https://i.imgur.com/H6vESv7.png">||||| TalkingCardChooser|DeathcardCreationNonOption||
+|Stunted Wolf|2|2| <img align="center" src="https://i.imgur.com/H6vESv7.png">||||| TalkingCardChooser|DeathcardCreationNonOption|Canine|
+
+Balanced
 |Name|Power|Health|Cost|Evolution|Frozen Away|Tail|Sigils|Specials|Traits|Tribes|
 |:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|:-|
 |Stinkbug|0|1| <img align="center" src="https://i.imgur.com/beJhD7d.png">|||| Stinky| TalkingCardChooser|DeathcardCreationNonOption|Insect|
@@ -47,6 +55,8 @@ No promises on any of these though suggestions and contributions are welcome. Th
 
 ## Changelog
 
+### 1.0.2
+- Set original stats for talking cards as default
 ### 1.0.1 
 - Fix README markdown typo
 ### 1.0.0 
