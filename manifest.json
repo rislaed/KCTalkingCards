@@ -1,6 +1,6 @@
 ﻿{
     "name": "KCTalkingCards",
-    "version_number": "1.0.0",
+    "version_number": "1.0.1",
     "website_url": "https://github.com/RykeDaxter/KCTalkingCards",
     "description": "An Inscryption mod that adds the talking cards from Part 1 into Kaycee's Mod.",
     "dependencies": [
