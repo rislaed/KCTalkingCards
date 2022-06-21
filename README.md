@@ -1,27 +1,28 @@
-﻿## KCTalkingCards
+﻿KCTalkingCards
+===============
 
 An Inscryption mod that adds the talking cards from Part 1 into Kaycee's Mod. 
 
-This mod adds a starter deck with the Stoat, Stinkbug, and Stunted Wolf talking cards from Part 1. The cards use the base animated portrait and their dialogue when drawn has been skipped to speed up play.
+This mod adds a starter deck with the Stoat, Stinkbug, and Stunted Wolf talking cards from Part 1. The talking cards use the base animated portrait and any dialogue when you draw them to your hand has been skipped to speed up play.
 
 ## Balancing
 
 The talking cards use their original Part 1 stats by default but you can apply some balancing by setting `TalkingCardsBalance` to `true` in the configuration. You can see the exact changes for the balancing below but the Stoat and Stunted Wolf would be functionally identical to the Stoat and Wolf cards in Kaycee's Mod except they're not eligible for combining with their non-talking counterparts at the Mycologists event. As the Stinkbug has no counterpart it has been manually balanced to account for its cheap cost and sigil.
 
-The Talking Cards starter deck when balanced is roughly equivalent to the Vanilla starter deck, swapping out the Bullfrog for the Stinkbug. The Talking Cards deck when balanced has no advantage other than the cards talking and being animated. You will find no other copy of the talking cards during the game. If you are doing challenge runs with the balanced deck, know that sacrifices must be made. Otherwise, enjoy.
+The Talking Cards starter deck when balanced is roughly equivalent to the Vanilla starter deck, swapping out the Bullfrog for the Stinkbug. The Talking Cards deck when balanced has no advantage other than the cards talking and being animated. You will find no other copy of the talking cards during the game. If you are doing challenge runs with the balanced Talking Cards starter deck, know that sacrifices must be made. Otherwise, enjoy.
 
 ## Issues
 
-* Lags the first time you hover over the Talking Cards starter deck every time you open the game. As far as I can tell it's due to the talking cards being loaded when you select the starter deck and the cards try to find a camera that doesn't exist yet for their animations.
+* Let me know if you find any!
 
 ## Possible Updates
 
 * Option to allow talking cards to be found during the game even if you didn't select the starter deck.
 * Option to add a non-talking stinkbug card and allowing it and the non-talking stoat to be found during the game.
 * Option to allow talking cards to be combined with their non-talking counterparts at the Mycologists.
-* Art for the mod icon, the starter deck icon, and the pixel portraits for the talking cards.
+* Improved Art for the mod icon, the starter deck icon, and the pixel portraits for the talking cards.
 
-No promises on any of these though suggestions and contributions are welcome. The mod only focuses on including the talking cards from Part 1 into Kaycee's Mod so there's not much to add.
+No promises on any of these though suggestions and contributions are welcome. The mod only focuses on including the talking cards from Part 1 into Kaycee's Mod so there's not much more to add.
 
 ## Contents
 
@@ -51,13 +52,15 @@ Balanced
 
 |GUID|Section|Key|Description|
 |:-|:-|:-|:-|
-|rykedaxter.inscryption.kctalkingcards|General|TalkingCardsBalance|Applies balancing to the talking cards when true and uses the original Part 1 values for the talking cards otherwise.|
+|rykedaxter.inscryption.kctalkingcards|General|TalkingCardsBalance|Applies balancing to the talking cards when true and uses the original Part 1 stats for the talking cards otherwise.|
 
 ## Changelog
 
+### 1.0.3
+- Fixed the lag when hovering over a starter deck with talking cards in it for the first time.
 ### 1.0.2
-- Set original stats for talking cards as default
+- Original Part 1 stats for the talking cards has been set as the default.
 ### 1.0.1 
-- Fix README markdown typo
+- Fixed README markdown typo.
 ### 1.0.0 
 - **Release**
