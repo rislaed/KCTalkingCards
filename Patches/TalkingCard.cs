@@ -1,14 +1,15 @@
 ﻿using DiskCardGame;
 using HarmonyLib;
+using KCTalkingCards.util;
 using System.Linq;
 
-namespace KCTalkingCards
+namespace KCTalkingCards.Patches
 {
 	[HarmonyPatch(typeof(TalkingCard), "OnDrawn")]
-	class AscensionTalkingCardPatch
+	class AscensionTalkingCardOnDrawnPatch
 	{
 		[HarmonyPrefix]
-		static bool AscensionOnDrawn(TalkingCard __instance)
+		static bool AscensionTalkingCardOnDrawn(TalkingCard __instance)
 		{
 			if (SaveFile.IsAscension)
 			{
@@ -18,6 +19,23 @@ namespace KCTalkingCards
 				{
 					return false;
 				}
+			}
+			return true;
+		}
+	}
+
+	[HarmonyPatch(typeof(TalkingCard), "Start")]
+	class AscensionTalkingCardStartPatch
+	{
+		[HarmonyPrefix]
+		static bool AscensionTalkingCardStart()
+		{
+			if (SaveFile.IsAscension)
+			{	
+				if (MenuChecker.InMenu)
+				{
+					return false;
+				}			
 			}
 			return true;
 		}

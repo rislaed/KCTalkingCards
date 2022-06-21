@@ -3,7 +3,7 @@ using HarmonyLib;
 using UnityEngine;
 using System.Linq;
 
-namespace KCTalkingCards
+namespace KCTalkingCards.Patches
 {
     [HarmonyPatch(typeof(CardInfo), "AnimatedPortrait", MethodType.Getter)] 
 	class AscensionAnimatedPortraitPatch
