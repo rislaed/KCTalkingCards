@@ -15,12 +15,10 @@ namespace KCTalkingCards
     {     
 	    private const string PluginGuid = "rykedaxter.inscryption.kctalkingcards";
         private const string PluginName = "KCTalkingCards";
-        private const string PluginVersion = "1.0.3";
+        private const string PluginVersion = "1.0.4";
 
         private ConfigEntry<bool> configTalkingCardsBalance;
         private static Harmony harmony;
-
-        public bool inMenu; // Used in other patches
 
         private void Awake()
         {
@@ -35,20 +33,20 @@ namespace KCTalkingCards
 
             CardInfo KCTalkingCards_Stoat = Instantiate(CardLoader.GetCardByName("Stoat_Talking"))
                 .SetNames("KCTalkingCards_Stoat", "Stoat")                
-                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_stoat.png", Assembly.GetExecutingAssembly()));
+                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_kctalkingcards_stoat.png", Assembly.GetExecutingAssembly()));
             CardManager.Add(PluginName, KCTalkingCards_Stoat);
             CardInfo KCTalkingCards_Stinkbug = Instantiate(CardLoader.GetCardByName("Stinkbug_Talking"))
                 .SetNames("KCTalkingCards_Stinkbug", "Stinkbug")                
-                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_mealworm.png", Assembly.GetExecutingAssembly()));
+                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_kctalkingcards_stinkbug.png", Assembly.GetExecutingAssembly()));
             CardManager.Add(PluginName, KCTalkingCards_Stinkbug);
             CardInfo KCTalkingCards_Wolf = Instantiate(CardLoader.GetCardByName("Wolf_Talking"))
                 .SetNames("KCTalkingCards_Wolf", "Stunted Wolf")
-                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_wolf.png", Assembly.GetExecutingAssembly()));
+                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_kctalkingcards_wolf.png", Assembly.GetExecutingAssembly()));
             CardManager.Add(PluginName, KCTalkingCards_Wolf);
 
             StarterDeckInfo talkingCardsDeck = ScriptableObject.CreateInstance<StarterDeckInfo>();
             talkingCardsDeck.title = "Talking Cards";
-            talkingCardsDeck.iconSprite = TextureHelper.GetImageAsTexture("Art.starterdeck_icon_vanilla.png", Assembly.GetExecutingAssembly()).ConvertTexture(TextureHelper.SpriteType.StarterDeckIcon, FilterMode.Point);
+            talkingCardsDeck.iconSprite = TextureHelper.GetImageAsTexture("Art.starterdeck_icon_kctalkingcards_talkingcards.png", Assembly.GetExecutingAssembly()).ConvertTexture(TextureHelper.SpriteType.StarterDeckIcon, FilterMode.Point);
             talkingCardsDeck.cards = new() { CardLoader.GetCardByName("KCTalkingCards_Stoat"), CardLoader.GetCardByName("KCTalkingCards_Stinkbug"), CardLoader.GetCardByName("KCTalkingCards_Wolf") };
             StarterDeckManager.Add(PluginGuid, talkingCardsDeck);
 

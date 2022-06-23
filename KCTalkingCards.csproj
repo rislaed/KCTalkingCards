@@ -10,10 +10,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Art\pixelportrait_mealworm.png" />
-    <EmbeddedResource Include="Art\pixelportrait_stoat.png" />
-    <EmbeddedResource Include="Art\pixelportrait_wolf.png" />
-    <EmbeddedResource Include="Art\starterdeck_icon_vanilla.png" />
+    <None Remove="Art\pixelportrait_kctalkingcards_stinkbug.png" />
+    <None Remove="Art\pixelportrait_kctalkingcards_stoat.png" />
+    <None Remove="Art\pixelportrait_kctalkingcards_wolf.png" />
+    <None Remove="Art\starterdeck_icon_kctalkingcards_talkingcards.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Art\pixelportrait_kctalkingcards_stinkbug.png" />
+    <EmbeddedResource Include="Art\pixelportrait_kctalkingcards_stoat.png" />
+    <EmbeddedResource Include="Art\pixelportrait_kctalkingcards_wolf.png" />
+    <EmbeddedResource Include="Art\starterdeck_icon_kctalkingcards_talkingcards.png" />
   </ItemGroup>
 
   <ItemGroup>
