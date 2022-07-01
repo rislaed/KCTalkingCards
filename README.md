@@ -94,18 +94,16 @@ Content tables in Readme created with the use of [Readme Maker](https://inscrypt
 
 ## Changelog
 
+<details>
+<summary>Changelog
+</summary>
+
 ### 1.0.5
 - Included talking cards into card choices and added a setting for it
 - Added a setting for toggling the talking cards as rare
 - Added a setting for placing the non-talking stoat into card choices
 - Added a setting for allowing talking cards to be merged with non-talking counterparts at the Mycologists event
 - Added settings to assign the talking card counterpart by their internal card name
-
-
-<details>
-<summary>Older Versions
-</summary>
-
 
 ### 1.0.4
 - Added improved art for the talking cards starter deck, the talking cards pixel portraits, and the mod icon.
