@@ -13,14 +13,14 @@ namespace KCTalkingCards
     [BepInDependency("cyantist.inscryption.api")]
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public class Plugin : BaseUnityPlugin
-    {     
-	    public const string PluginGuid = "rykedaxter.inscryption.kctalkingcards";
+    {
+        public const string PluginGuid = "rykedaxter.inscryption.kctalkingcards";
         public const string PluginName = "KCTalkingCards";
         public const string PluginVersion = "1.0.6-dev";
 
         private static ConfigEntry<bool> configTalkingCardsAppearInCardChoices;
         private static ConfigEntry<bool> configTalkingCardsAreRare;
-        private static ConfigEntry<bool> configTalkingCardsBalance;    
+        private static ConfigEntry<bool> configTalkingCardsBalance;
         private static ConfigEntry<bool> configNontalkingStoatAppearsInCardChoices;
         private static ConfigEntry<bool> configTalkingCardsNontalkingMerge;
         private static ConfigEntry<string> configTalkingStoatCounterpart;
@@ -30,7 +30,7 @@ namespace KCTalkingCards
         public static bool talkingCardsNontalkingMergeFlag;
         public static string talkingStoatCounterpart;
         public static string talkingStinkbugCounterpart;
-        public static string talkingWolfCounterpart;    
+        public static string talkingWolfCounterpart;
 
         private static Harmony harmony;
 
@@ -89,12 +89,12 @@ namespace KCTalkingCards
             /* Add Cards and Starter Deck */
 
             CardInfo KCTalkingCards_Stoat = Instantiate(CardLoader.GetCardByName("Stoat_Talking"))
-                .SetNames("KCTalkingCards_Stoat", "Stoat")                
+                .SetNames("KCTalkingCards_Stoat", "Stoat")
                 .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_kctalkingcards_stoat.png", Assembly.GetExecutingAssembly()));
             CardManager.Add(PluginName, KCTalkingCards_Stoat);
 
             CardInfo KCTalkingCards_Stinkbug = Instantiate(CardLoader.GetCardByName("Stinkbug_Talking"))
-                .SetNames("KCTalkingCards_Stinkbug", "Stinkbug")                
+                .SetNames("KCTalkingCards_Stinkbug", "Stinkbug")
                 .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_kctalkingcards_stinkbug.png", Assembly.GetExecutingAssembly()));
             CardManager.Add(PluginName, KCTalkingCards_Stinkbug);
 
@@ -110,15 +110,15 @@ namespace KCTalkingCards
             StarterDeckManager.Add(PluginGuid, talkingCardsDeck);
 
             /* Apply Configuration */
-            
-            if (configTalkingCardsAppearInCardChoices.Value) 
+
+            if (configTalkingCardsAppearInCardChoices.Value)
             {
                 KCTalkingCards_Stoat.AddMetaCategories(CardMetaCategory.ChoiceNode, CardMetaCategory.TraderOffer);
                 KCTalkingCards_Stinkbug.AddMetaCategories(CardMetaCategory.ChoiceNode, CardMetaCategory.TraderOffer);
                 KCTalkingCards_Wolf.AddMetaCategories(CardMetaCategory.ChoiceNode, CardMetaCategory.TraderOffer);
             }
-            
-            if (configTalkingCardsAreRare.Value) 
+
+            if (configTalkingCardsAreRare.Value)
             {
                 KCTalkingCards_Stoat.AddMetaCategories(CardMetaCategory.Rare);
                 KCTalkingCards_Stinkbug.AddMetaCategories(CardMetaCategory.Rare);
@@ -130,7 +130,7 @@ namespace KCTalkingCards
                 KCTalkingCards_Stoat.SetBaseAttackAndHealth(1, 2);
                 KCTalkingCards_Stinkbug.SetBaseAttackAndHealth(0, 1);
                 KCTalkingCards_Wolf.SetBaseAttackAndHealth(3, 2).SetBloodCost(2);
-            } 
+            }
 
             if (configNontalkingStoatAppearsInCardChoices.Value)
             {
@@ -144,8 +144,8 @@ namespace KCTalkingCards
         }
 
         private void OnDestroy()
-		{
-			harmony?.UnpatchSelf();
-		}
+        {
+            harmony?.UnpatchSelf();
+        }
     }
 }
