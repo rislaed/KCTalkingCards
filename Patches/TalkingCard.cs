@@ -5,9 +5,10 @@ using System.Linq;
 
 namespace KCTalkingCards.Patches
 {
-	[HarmonyPatch(typeof(TalkingCard), "OnDrawn")]
-	class AscensionTalkingCardOnDrawnPatch
+	[HarmonyPatch]
+	class AscensionTalkingCardPatch
 	{
+		[HarmonyPatch(typeof(TalkingCard), "OnDrawn")]
 		[HarmonyPrefix]
 		static bool AscensionTalkingCardOnDrawn(TalkingCard __instance)
 		{
@@ -22,20 +23,17 @@ namespace KCTalkingCards.Patches
 			}
 			return true;
 		}
-	}
 
-	[HarmonyPatch(typeof(TalkingCard), "Start")]
-	class AscensionTalkingCardStartPatch
-	{
+		[HarmonyPatch(typeof(TalkingCard), "Start")]
 		[HarmonyPrefix]
 		static bool AscensionTalkingCardStart()
 		{
 			if (SaveFile.IsAscension)
-			{	
+			{
 				if (MenuChecker.InMenu)
 				{
 					return false;
-				}			
+				}
 			}
 			return true;
 		}
