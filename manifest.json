@@ -6,6 +6,5 @@
     "dependencies": [
         "API_dev-API-2.4.0",
         "BepInEx-BepInExPack_Inscryption-5.4.1901",
-        "BepInEx-MonoMod_Loader_Inscryption-1.0.0"
     ]
 }
