@@ -16,7 +16,7 @@ namespace KCTalkingCards
     {     
 	    public const string PluginGuid = "rykedaxter.inscryption.kctalkingcards";
         public const string PluginName = "KCTalkingCards";
-        public const string PluginVersion = "1.0.6-dev";
+        public const string PluginVersion = "1.0.5";
 
         private static ConfigEntry<bool> configTalkingCardsAppearInCardChoices;
         private static ConfigEntry<bool> configTalkingCardsAreRare;

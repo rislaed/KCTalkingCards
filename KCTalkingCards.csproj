@@ -3,7 +3,7 @@
   <PropertyGroup>
 	<AssemblyName>KCTalkingCards</AssemblyName>
     <Description>An Inscryption mod that adds the talking cards from Part 1 into Kaycee's Mod.</Description>
-    <Version>1.0.6-dev</Version>
+    <Version>1.0.5</Version>
     <TargetFramework>netstandard2.0</TargetFramework>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
