@@ -6,9 +6,9 @@ using System.Linq;
 
 namespace KCTalkingCards.Patches
 {
-	[HarmonyPatch]
-	class AscensionDuplicateMergeSequencerPatch
-	{
+    [HarmonyPatch]
+    class AscensionDuplicateMergeSequencerPatch
+    {
         [HarmonyPatch(typeof(DuplicateMergeSequencer), "GetValidDuplicateCards")]
         [HarmonyPostfix]
         private static void AddValidTalkingDuplicates(ref List<CardInfo> __result)

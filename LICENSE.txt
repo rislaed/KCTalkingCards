@@ -1,6 +1,8 @@
-﻿Images, artwork, and used libraries belong to their respective owners under their respective licenses.
+﻿Images, artwork, and used libraries belong to their respective owners under 
+their respective licenses.
 
-All other code and associated documents is copyright 2022 Ryke Daxter under the MIT License.
+All other code and associated documents is copyright 2022 Ryke Daxter under 
+the MIT License.
 
 The MIT License (MIT)
 
