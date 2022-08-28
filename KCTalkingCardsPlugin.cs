@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Bootstrap;
 using BepInEx.Configuration;
 using DiskCardGame;
 using HarmonyLib;
@@ -11,12 +12,14 @@ using UnityEngine;
 namespace KCTalkingCards
 {
     [BepInDependency("cyantist.inscryption.api")]
+    [BepInDependency(MycomergerGuid, BepInDependency.DependencyFlags.SoftDependency)]
     [BepInPlugin(PluginGuid, PluginName, PluginVersion)]
     public class Plugin : BaseUnityPlugin
     {
         public const string PluginGuid = "rykedaxter.inscryption.kctalkingcards";
         public const string PluginName = "KCTalkingCards";
-        public const string PluginVersion = "1.0.5";
+        public const string PluginVersion = "1.0.6";
+        public const string MycomergerGuid = "rykedaxter.inscryption.mycomerger";
 
         private static ConfigEntry<bool> configTalkingCardsAppearInCardChoices;
         private static ConfigEntry<bool> configTalkingCardsAreRare;
@@ -26,11 +29,6 @@ namespace KCTalkingCards
         private static ConfigEntry<string> configTalkingStoatCounterpart;
         private static ConfigEntry<string> configTalkingStinkbugCounterpart;
         private static ConfigEntry<string> configTalkingWolfCounterpart;
-
-        public static bool talkingCardsNontalkingMergeFlag;
-        public static string talkingStoatCounterpart;
-        public static string talkingStinkbugCounterpart;
-        public static string talkingWolfCounterpart;
 
         private static Harmony harmony;
 
@@ -65,7 +63,7 @@ namespace KCTalkingCards
             configTalkingCardsNontalkingMerge = Config.Bind("Mycologists",
                 "TalkingCardsNontalkingMerge",
                 false,
-                "Allows talking cards to be merged with their non-talking counterparts at the Mycologists when true."
+                "Allows talking cards to be merged with their non-talking counterparts at the Mycologists when true. Requires the MycoMerger mod."
             );
 
             configTalkingStoatCounterpart = Config.Bind("Mycologists",
@@ -137,10 +135,16 @@ namespace KCTalkingCards
                 CardLoader.GetCardByName("Stoat").AddMetaCategories(CardMetaCategory.ChoiceNode, CardMetaCategory.TraderOffer);
             }
 
-            talkingCardsNontalkingMergeFlag = configTalkingCardsNontalkingMerge.Value;
-            talkingStoatCounterpart = configTalkingStoatCounterpart.Value;
-            talkingStinkbugCounterpart = configTalkingStinkbugCounterpart.Value;
-            talkingWolfCounterpart = configTalkingWolfCounterpart.Value;
+            if (configTalkingCardsNontalkingMerge.Value)
+            {
+                if (Chainloader.PluginInfos.ContainsKey(MycomergerGuid))
+                {
+                    KCTalkingCards_Stoat.SetExtendedProperty("MycoMerger", $"{configTalkingStoatCounterpart.Value}:{KCTalkingCards_Stoat.name}");
+                    KCTalkingCards_Stinkbug.SetExtendedProperty("MycoMerger", $"{configTalkingStinkbugCounterpart.Value}:{KCTalkingCards_Stinkbug.name}");
+                    KCTalkingCards_Wolf.SetExtendedProperty("MycoMerger", $"{configTalkingWolfCounterpart.Value}:{KCTalkingCards_Wolf.name}");
+                }
+            }
+
         }
 
         private void OnDestroy()

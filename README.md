@@ -80,7 +80,7 @@ Contributions are welcome!
 |General|TalkingCardsAppearInCardChoices|Talking Cards will show up in common card choices when true. Talking Cards are unique and if you already have one of a Talking Card in your deck, that Talking Card will not show up in card choices.|
 |General|TalkingCardsAreRare|Talking Cards will be set as Rare. They will show up in Rare card choices and qualify as Rare for Rarity trials. You can have both this and TalkingCardsAppearInCardChoices active at the same time.|
 |General|TalkingCardsBalance|Applies balancing to the talking cards when true and uses the original Part 1 values for the talking cards otherwise.|
-|Mycologists|TalkingCardsNontalkingMerge|Allows talking cards to be merged with their non-talking counterparts at the Mycologists when true.|
+|Mycologists|TalkingCardsNontalkingMerge|Allows talking cards to be merged with their non-talking counterparts at the Mycologists when true. Requires the [MycoMerger](https://inscryption.thunderstore.io/package/RykeDaxter/MycoMerger/) mod.|
 |Mycologists|TalkingStinkbugCounterpart|The card name that designates the counterpart of the Talking Stinkbug for merging at the Mycologists. Default is "RingWorm".|
 |Mycologists|TalkingStoatCounterpart|The card name that designates the counterpart of the Talking Stoat for merging at the Mycologists. Default is "Stoat".|
 |Mycologists|TalkingWolfCounterpart|The card name that designates the counterpart of the Talking Wolf for merging at the Mycologists. Default is "Wolf".|
@@ -97,6 +97,9 @@ Content tables in Readme created with the use of [Readme Maker](https://inscrypt
 <details>
 <summary>Changelog
 </summary>
+
+### 1.0.6
+- Added compatibility with the [MycoMerger](https://inscryption.thunderstore.io/package/RykeDaxter/MycoMerger/) mod to prevent conflicts. Now requires MycoMerger for merging talking cards with counterparts.
 
 ### 1.0.5
 - Included talking cards into card choices and added a setting for it
