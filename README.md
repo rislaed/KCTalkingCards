@@ -11,7 +11,7 @@ You can fine-tune how you want the talking cards to work in your configuration. 
 
 The talking cards use their original Part 1 stats by default but you can apply some balancing by setting `TalkingCardsBalance` to `true` in the configuration. You can see the exact changes for the balancing below but the Stoat and Stunted Wolf would be functionally identical to the Stoat and Wolf cards in Kaycee's Mod. As the Stinkbug has no direct counterpart it has been manually balanced to account for its cheap cost and sigil.
 
-You can also set `TalkingCardsNontalkingMerge` to `true` to allow the talking cards to be merged with their non-talking counterpart at the Mycologists event. You can change what that counterpart is in the configuration but the recommended default is Talking Stoat with Stoat, Stinkbug with RingWorm, and Stunted Wolf with Wolf. When setting the card name in the configuration, it must be the internal card name and not the displayed card name.
+If you have the [MycoMerger](https://inscryption.thunderstore.io/package/RykeDaxter/MycoMerger/) mod installed, you can also set `TalkingCardsNontalkingMerge` to `true` to allow the talking cards to be merged with their non-talking counterpart at the Mycologists event. You can change what that counterpart is in the configuration but the recommended default is Talking Stoat with Stoat, Stinkbug with RingWorm, and Stunted Wolf with Wolf. When setting the card name in the configuration, it must be the [internal card name](https://github.com/MADH95/JSONLoader/blob/master/Card%20Names.txt) and not the displayed card name.
 
 The Talking Cards starter deck when balanced is roughly equivalent to the Vanilla starter deck, swapping out the Bullfrog for the Stinkbug. The balancing attempts to bring the cards closer to the base game, giving no advantage for having them other than the cards talking and being animated.
 
@@ -23,6 +23,7 @@ You can adjust the mod's settings using your mod manager's Config editor or by m
 
 * You can use the [Thunderstore](https://www.overwolf.com/app/Thunderstore-Thunderstore_Mod_Manager), [r2modman](https://inscryption.thunderstore.io/package/ebkr/r2modman/), or another compatible mod manager to automatically install this mod from the [Thunderstore page](https://inscryption.thunderstore.io/package/RykeDaxter/KCTalkingCards/). 
 * You can manually install this mod by downloading the dll from the [Thunderstore page](https://inscryption.thunderstore.io/package/RykeDaxter/KCTalkingCards/) or the latest [Github release](https://github.com/RykeDaxter/KCTalkingCards) then placing `KCTalkingCards.dll` into `/BepInEx/plugins` assuming you have already installed the required dependencies ([BepInEx-BepInExPack_Inscryption](https://inscryption.thunderstore.io/package/BepInEx/BepInExPack_Inscryption/) and [API_dev-API](https://inscryption.thunderstore.io/package/API_dev/API/)). For intructions on how to install the dependencies, please refer to their respective pages.
+* You can optionally install the [MycoMerger](https://inscryption.thunderstore.io/package/RykeDaxter/MycoMerger/) mod to allow talking cards to be merged with their non-talking counterparts.
 
 ## Issues and Future Updates
 
