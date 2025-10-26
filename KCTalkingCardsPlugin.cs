@@ -18,13 +18,15 @@ namespace KCTalkingCards
     {
         public const string PluginGuid = "rykedaxter.inscryption.kctalkingcards";
         public const string PluginName = "KCTalkingCards";
-        public const string PluginVersion = "1.0.6";
+        public const string PluginVersion = "1.1.0";
         public const string MycomergerGuid = "rykedaxter.inscryption.mycomerger";
 
+        private static ConfigEntry<bool> configTalkingCardsAppearInSeparateDeck;
         private static ConfigEntry<bool> configTalkingCardsAppearInCardChoices;
         private static ConfigEntry<bool> configTalkingCardsAreRare;
         private static ConfigEntry<bool> configTalkingCardsBalance;
         private static ConfigEntry<bool> configNontalkingStoatAppearsInCardChoices;
+        private static ConfigEntry<bool> configTalkingCardsReplacesStarterDeck;
         private static ConfigEntry<bool> configTalkingCardsNontalkingMerge;
         private static ConfigEntry<string> configTalkingStoatCounterpart;
         private static ConfigEntry<string> configTalkingStinkbugCounterpart;
@@ -35,6 +37,12 @@ namespace KCTalkingCards
         private void Awake()
         {
             harmony = Harmony.CreateAndPatchAll(Assembly.GetExecutingAssembly(), PluginGuid);
+
+            configTalkingCardsAppearInSeparateDeck = Config.Bind("General",
+                "TalkingCardsAppearInSeparateDeck",
+                false,
+                "Talking Cards will occupy separate deck and can be selected if ascension is unlocked."
+            );
 
             configTalkingCardsAppearInCardChoices = Config.Bind("General",
                 "TalkingCardsAppearInCardChoices",
@@ -50,7 +58,7 @@ namespace KCTalkingCards
 
             configTalkingCardsBalance = Config.Bind("General",
                 "TalkingCardsBalance",
-                false,
+                true,
                 "Applies balancing to the talking cards when true and uses the original Part 1 values for the talking cards otherwise."
             );
 
@@ -58,6 +66,12 @@ namespace KCTalkingCards
                 "NontalkingStoatAppearsInCardChoices",
                 false,
                 "The non-talking stoat card will appear in card choices when true."
+            );
+
+            configTalkingCardsReplacesStarterDeck = Config.Bind("General",
+                "TalkingCardsReplacesStarterDeck",
+                true,
+                "Allows non-talking cards to be replaced with their talking counterparts in starter decks when true."
             );
 
             configTalkingCardsNontalkingMerge = Config.Bind("Mycologists",
@@ -86,28 +100,54 @@ namespace KCTalkingCards
 
             /* Add Cards and Starter Deck */
 
+            CardInfo InscryptionCards_Stoat = CardLoader.GetCardByName(configTalkingStoatCounterpart.Value);
             CardInfo KCTalkingCards_Stoat = Instantiate(CardLoader.GetCardByName("Stoat_Talking"))
                 .SetNames("KCTalkingCards_Stoat", "Stoat")
-                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_kctalkingcards_stoat.png", Assembly.GetExecutingAssembly()));
+                .SetPixelPortrait(InscryptionCards_Stoat?.pixelPortrait);
             CardManager.Add(PluginName, KCTalkingCards_Stoat);
 
+            CardInfo InscryptionCards_Stinkbug = CardLoader.GetCardByName(configTalkingStinkbugCounterpart.Value);
             CardInfo KCTalkingCards_Stinkbug = Instantiate(CardLoader.GetCardByName("Stinkbug_Talking"))
                 .SetNames("KCTalkingCards_Stinkbug", "Stinkbug")
-                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_kctalkingcards_stinkbug.png", Assembly.GetExecutingAssembly()));
+                .SetPixelPortrait(InscryptionCards_Stinkbug?.pixelPortrait);
             CardManager.Add(PluginName, KCTalkingCards_Stinkbug);
 
+            CardInfo InscryptionCards_Wolf = CardLoader.GetCardByName(configTalkingWolfCounterpart.Value);
             CardInfo KCTalkingCards_Wolf = Instantiate(CardLoader.GetCardByName("Wolf_Talking"))
                 .SetNames("KCTalkingCards_Wolf", "Stunted Wolf")
-                .SetPixelPortrait(TextureHelper.GetImageAsTexture("Art.pixelportrait_kctalkingcards_wolf.png", Assembly.GetExecutingAssembly()));
+                .SetPixelPortrait(InscryptionCards_Wolf?.pixelPortrait);
             CardManager.Add(PluginName, KCTalkingCards_Wolf);
 
-            StarterDeckInfo talkingCardsDeck = ScriptableObject.CreateInstance<StarterDeckInfo>();
-            talkingCardsDeck.title = "Talking Cards";
-            talkingCardsDeck.iconSprite = TextureHelper.GetImageAsTexture("Art.starterdeck_icon_kctalkingcards_talkingcards.png", Assembly.GetExecutingAssembly()).ConvertTexture(TextureHelper.SpriteType.StarterDeckIcon, FilterMode.Point);
-            talkingCardsDeck.cards = new() { CardLoader.GetCardByName("KCTalkingCards_Stoat"), CardLoader.GetCardByName("KCTalkingCards_Stinkbug"), CardLoader.GetCardByName("KCTalkingCards_Wolf") };
-            StarterDeckManager.Add(PluginGuid, talkingCardsDeck);
-
             /* Apply Configuration */
+
+            if (configTalkingCardsReplacesStarterDeck.Value)
+			{
+                foreach (var deck in StarterDeckManager.BaseGameDecks)
+                {
+                    if (deck.CardNames.Contains(configTalkingStoatCounterpart.Value))
+                    {
+                        deck.CardNames[deck.CardNames.IndexOf(configTalkingStoatCounterpart.Value)] = KCTalkingCards_Stoat.name;
+                    }
+                    if (deck.CardNames.Contains(configTalkingStinkbugCounterpart.Value))
+                    {
+                        deck.CardNames[deck.CardNames.IndexOf(configTalkingStinkbugCounterpart.Value)] = KCTalkingCards_Stinkbug.name;
+                    }
+                    if (deck.CardNames.Contains(configTalkingWolfCounterpart.Value))
+                    {
+                        deck.CardNames[deck.CardNames.IndexOf(configTalkingWolfCounterpart.Value)] = KCTalkingCards_Wolf.name;
+                    }
+                }
+                StarterDeckManager.SyncDeckList();
+			}
+
+            if (configTalkingCardsAppearInSeparateDeck.Value)
+            {
+                StarterDeckInfo talkingCardsDeck = ScriptableObject.CreateInstance<StarterDeckInfo>();
+                talkingCardsDeck.title = "Talking Cards";
+                talkingCardsDeck.iconSprite = TextureHelper.GetImageAsTexture("Art.starterdeck_icon_kctalkingcards_talkingcards.png", Assembly.GetExecutingAssembly()).ConvertTexture(TextureHelper.SpriteType.StarterDeckIcon, FilterMode.Point);
+                talkingCardsDeck.cards = [CardLoader.GetCardByName("KCTalkingCards_Stoat"), CardLoader.GetCardByName("KCTalkingCards_Stinkbug"), CardLoader.GetCardByName("KCTalkingCards_Wolf")];
+                StarterDeckManager.Add(PluginGuid, talkingCardsDeck);
+            }
 
             if (configTalkingCardsAppearInCardChoices.Value)
             {
